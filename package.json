@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run --config video=false --env allure=true",
+    "report:generate": "allure generate allure-results",
+    "report:open": "allure open allure-report",
+    "report:clear": "rm -r allure-results/ allure-report || true",
+    "test": "npx npm-run-all report:clear cy:run allure:generate"
   },
   "repository": {
     "type": "git",
@@ -18,6 +23,7 @@
   },
   "homepage": "https://github.com/jonathandasilvaalves/automation-with-cypress#readme",
   "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^1.8.3",
     "cypress": "^4.1.0"
   }
 }
